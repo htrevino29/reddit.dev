@@ -11,27 +11,70 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::get('/', 'HomeController@showWelcome');
+
+Route::get('/uppercase/{word?}', 'HomeController@uppercase');
+
+Route::get('/increment/{number?}', 'HomeController@increment');
+
+
+
+
+Route::get('/sayhello/{name?}', function ($name = 'Lassen') {
+    $data = array('name' => $name);
+    return view('my-first-view')->with($data);
 });
 
-// Route::get('/sayhello', function() {
-// 	// $a = 4;
-// 	// $b = 6;
-// 	// return $a * $b;
-// 	return 'Hello Lassen';
-// });
-
-// Route::get('/sayhello/{name?}', function ($name = 'Lassen') {
-// 	return 'Hello '. $name;
-// });
+// ==================================== exercise 1 =====================================
 
 
-Route::get('/sayhello/{name}', function($name)
-{
-    if ($name == "Chris") {
-        return redirect('/');
-    }
 
-    return "Hello, $name!";
+
+// route to uppercase word given
+
+
+
+
+
+
+
+
+
+
+
+
+// route to add one to number given
+// route to add the two numbers given together
+Route::get('/add/{a?}/{b?}', function($a = 2, $b = 2) {
+  
+    return ($a + $b);
 });
+
+// =========================================================================================
+
+Route::get('/rolldice/{guess?}', function($guess = 1) {
+    $data['dice_roll'] = mt_rand(1, 6);
+    $data['guess'] = $guess;
+    $data['correct'] = ($data['dice_roll'] == $data['guess']);
+    return view('roll-dice')->with($data);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
