@@ -33,7 +33,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
-        $this->redirectePath = action('PostsController@index');
+        $this->redirectePath = action('PostsController@index');             
     }
 
     /**

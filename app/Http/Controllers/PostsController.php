@@ -24,10 +24,19 @@ class PostsController extends Controller
      */
     public function index()
     { 
-       
-        $posts = Post::paginate(4);
-        return view('posts.index')->with(array('posts' => $posts));
+        $posts = Post::with('user')->paginate(5);
 
+        // $posts = Post::paginate(4);
+        // $user = User::find(2);
+        // dd($user->posts);
+        // dd($posts);
+        // $posts = Post::find(4);
+        // dd($posts->user->email);
+
+     return view('posts.index')->with(array('posts' => $posts));
+        //all posts that have 'lorem' in their title
+        // $posts = Post::where('title', 'LIKE', '%dog%')->where('content', 'LIKE', '%dog%')->get();
+        // dd($posts);
     }
 
     /**

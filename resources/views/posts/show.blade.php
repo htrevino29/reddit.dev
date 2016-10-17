@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
+@section('page-heading', 'Show Post')
+
+
 @section('content')
-	<div class='container'>
-		<h1> SHOW POST</h1>
-		<h1>{{$post->title}}</h1>
-		<p>{{$post->url}}</p>
-		<p>{{$post->content}}</p>
-		
-	</div>
+	<h1>{{ $post->title }}</h1>
+	<p>{{ $post->content }}</p>
+	<a href="{{ $post->url }}">Go to this thing</a>
+
 
 @stop
