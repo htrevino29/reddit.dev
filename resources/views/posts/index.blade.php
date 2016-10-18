@@ -1,40 +1,36 @@
+
 @extends('layouts.master')
 
 @section('content')
 
-<div class='container'>		
+<div class='container'>	
 
-
-	<div class='col-sm-9'>
-	<h1>Posts</h1>
+	<div class='col-sm-12'>
+		<h1 class='postsh1'>Posts</h1>
 		<div>
 			@foreach($posts as $post)
-				<div>
-					<tr><h4>{{$post->title}}</h4></tr>
-									
-						<td>{{$post->url}}</td>
-					<br>
-						<td>{{$post->content}}</td>	
-					<br>
-						{{-- <td><h5>Posted</h5><h6> {{ $post->created_at->format('l, jS F Y') }}</h6></td> --}}
-						<td>{{ $post->created_at}}</td>
-					</tr>
-					<br>
+				<div class='posts'>
+					<tr class='title'><h4>{{$post->title}}</h4></t>
+					<td class='url'>{{$post->url}}</td>
+					<br>					
+					<td class='created'>Submitted {{ $post->created_at}}</td>
+					<td class='username'>By {{$post->user->name}}</td>
+					</tr>					
 				</div>	
 			@endforeach 
-		{!! $posts->render() !!} {{-- renders pagination --}}
+				<span class='pagination'>{!! $posts->render() !!}</span> {{-- renders pagination --}}
 		</div>
-	  </div>
-	  <div class="col-sm-3">
-	    <div class="input-group">
-	      <input type="text" class="form-control" placeholder="w..t.F">
-	      <span class="input-group-btn">
-	        <button class="btn btn-primary" type="button">Search Posts</button>
-	      </span>
-	    </div><!-- /input-group -->
-	  </div><!-- /.col-lg-6 -->
+	</div>
+  	<div class="col-sm-3">
+    	<div class="input-group">
+	      	<input type="text" class="form-control" placeholder="find stuffs">
+	      	<span class="input-group-btn">
+	       	<button class="btn btn-primary" type="button">Search</button>
+	      	</span>   	
+    	</div><!-- /input-group -->
+    
+
+  	</div><!-- /.col-lg-6 -->
 </div>
 
-
-{{-- ---------		 --}}
 @stop
